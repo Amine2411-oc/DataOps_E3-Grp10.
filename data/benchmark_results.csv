@@ -1,0 +1,5 @@
+test,execution_time,description
+Extraction,0.0,Load data from input.csv
+Transformation,0.0,Clean and transform the data
+Visualization,0.0,Generate plots and save
+Compression,0.0,Compress to Parquet format

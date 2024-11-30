@@ -1,0 +1,36 @@
+name: CI Pipeline
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+      
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: 3.9
+      
+      - name: Install dependencies
+        run: pip install pandas matplotlib pyarrow
+      
+      - name: Run extraction
+        run: python scripts/extract.py
+      
+      - name: Run transformation
+        run: python scripts/transform.py
+      
+      - name: Generate visualizations
+        run: python scripts/visualize.py
+      
+      - name: Run benchmarks
+        run: python scripts/benchmark.py
+      
+      - name: Compress files
+        run: python scripts/clean_compress.py
